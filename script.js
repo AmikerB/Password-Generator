@@ -90,22 +90,29 @@ var upperCasedCharacters = [
 
 let user = {
   pLength: 0,
-  special: true,
-  number: true,
   lower: true,
   upper: true,
+  number: true,
+  special: true,
 }
-
-
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  prompt("How long would you like the password to be?");
-  confirm("Would you like ... in your passward?");
-  confirm("")
+  user.pLength = prompt("How long would you like the password to be?");
+  user.lower = confirm("Would you like both upper and lowercae characters?");
+  user.number = confirm("Would you like numbers in your password?")
+  user.special = confirm("Would you like special characters in your passward?");
+  return;
+}
 
-} // should return something
-// can make an object with answers
+// create loop which generates different array combinations depending on whts tru and whats false 
+
+
+
+for (let i = 0; i < user.pLength; i++) {
+  let random = math.floor(math.random()) * //put name of above loop here);
+}
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -114,7 +121,7 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-  let password = 'xyz';
+  let password = ..();
 
   // logic goes here
 
