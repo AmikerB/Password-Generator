@@ -88,33 +88,33 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-
-
-
 // function which uses boolean values to include what other characters the user wants to include in their password. Then using the users choice of password length to generate a new string with random characters. 
 function generatePassword() {
-  let pLength = prompt("How long would you like the password to be?");
-  let upper = confirm("Would you like both uppercase and lowercase characters in your password?");
-  let number = confirm("Would you like numbers in your password?")
-  let special = confirm("Would you like special characters in your password?");
-  let characters = lowerCasedCharacters.join(''); // join need to take array with multiple strings to array with one string and all the values displayed together without spaces.
-  if (upper) {
-    characters += upperCasedCharacters.join('');
+  let pLength = prompt("How long would you like the password to be? (Must be between 10 and 64 characters)");
+  if (pLength >= 10 && pLength <= 64) {
+    let upper = confirm("Would you like both uppercase and lowercase characters in your password?");
+    let number = confirm("Would you like numbers in your password?")
+    let special = confirm("Would you like special characters in your password?");
+    let characters = lowerCasedCharacters.join(''); // join need to take array with multiple strings to array with one string and all the values displayed together without spaces.
+    if (upper) {
+      characters += upperCasedCharacters.join('');
+    }
+    if (number) {
+      characters += numericCharacters.join('');
+    }
+    if (special) {
+      characters += specialCharacters.join('');
+    }
+    let newString = "";
+    for (let i = 0; i < pLength; i++) {
+      newString += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return newString;
+  } else {
+    alert("Invalid password length. Please enter a number between 10 and 64.");
   }
-  if (number) {
-    characters += numericCharacters.join('');
-  }
-  if (special) {
-    characters += specialCharacters.join('');
-  }
-  let newString = "";
-  for (let i = 0; i < pLength; i++) {
-    newString += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return newString;
 }
 
-// // do not need to worry about code below
 // // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
