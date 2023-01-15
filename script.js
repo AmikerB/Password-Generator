@@ -88,54 +88,39 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-let user = {
-  pLength: 0,
-  lower: true,
-  upper: true,
-  number: true,
-  special: true,
-}
-
-// Function to prompt user for password options
-function getPasswordOptions() {
-  user.pLength = prompt("How long would you like the password to be?");
-  user.lower = confirm("Would you like both upper and lowercae characters?");
-  user.number = confirm("Would you like numbers in your password?")
-  user.special = confirm("Would you like special characters in your passward?");
-  return;
-}
-
-// create loop which generates different array combinations depending on whts tru and whats false 
 
 
 
-for (let i = 0; i < user.pLength; i++) {
-  let random = math.floor(math.random()) * //put name of above loop here);
-}
-
-
-// Function for getting a random element from an array
-function getRandom(arr) {
-
-} // yes should return. will return a single random element.
-
-// Function to generate password with user input
+// function which uses boolean values to include what other characters the user wants to include in their password. Then using the users choice of password length to generate a new string with random characters. 
 function generatePassword() {
-  let password = ..();
+  let pLength = prompt("How long would you like the password to be?");
+  let upper = confirm("Would you like both uppercase and lowercase characters in your password?");
+  let number = confirm("Would you like numbers in your password?")
+  let special = confirm("Would you like special characters in your password?");
+  let characters = lowerCasedCharacters.join(''); // join need to take array with multiple strings to array with one string and all the values displayed together without spaces.
+  if (upper) {
+    characters += upperCasedCharacters.join('');
+  }
+  if (number) {
+    characters += numericCharacters.join('');
+  }
+  if (special) {
+    characters += specialCharacters.join('');
+  }
+  let newString = "";
+  for (let i = 0; i < pLength; i++) {
+    newString += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return newString;
+}
 
-  // logic goes here
-
-  return password
-
-} // uses above two functions to generate a password
-
-// do not need to worry about code below
-// Get references to the #generate element
+// // do not need to worry about code below
+// // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  let password = generatePassword();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -143,3 +128,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
