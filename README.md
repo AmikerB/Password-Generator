@@ -1,11 +1,11 @@
 # Password Generator
 
-This [webpage]() uses Javascript to alllow the user to generate a random password. When the 'Generate Password' button is clicked, a prompt pops up asking the user how long they would like their passsword to be, if they'd like both lowercase and uppercase characters, if they'd like  numbers and if they'd like special characters included int their password. Based on the users input a random password is generated into the box.
+This [webpage](https://amikerb.github.io/Password-Generator/) uses Javascript to alllow the user to generate a random password. When the 'Generate Password' button is clicked, a prompt pops up asking the user how long they would like their passsword to be, if they'd like both lowercase and uppercase characters, if they'd like  numbers and if they'd like special characters included int their password. Based on the users input a random password is generated into the box.
 
 ## Usage 
 
 ### Screenshot of wepage on a desktop:
-![alt text](/style/Images/)
+![alt text](./style/Images/amikerb.github.io_Password-Generator_.png)
 
 ## Credits 
 
