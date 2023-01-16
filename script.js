@@ -88,70 +88,89 @@ let upperCasedCharacters = [
   'Z'
 ];
 
+let shouldUseLower = true;
 let shouldUseUpper = true;
 let shouldUseNumber = true;
 let shouldUseSpecial = true;
 let passwordCharacters = [];
 
-let howLong = prompt("How long would you like the password to be? (Must be between 10 and 64 characters)");
+function generatePassword() {
+  let howLong = prompt("How long would you like the password to be? (Must be between 10 and 64 characters)");
 
-let lengthOfPassword = Number(howLong);
+  // converting the string answer to a number so can be used later
+  let lengthOfPassword = Number(howLong);
 
-if (lengthOfPassword >= 10 && lengthOfPassword <= 64) {
-  shouldUseUpper = confirm("Would you like both uppercase and lowercase characters in your password?");
-  shouldUseNumber = confirm("Would you like numbers in your password?");
-  shouldUseSpecial = confirm("Would you like special characters in your password?");
-} else {
-  alert("Invalid password length. Please enter a number between 10 and 64.");
+  // making sure the number is between 10 and 64 before the other questions are asked.
+  if (lengthOfPassword >= 10 && lengthOfPassword <= 64) {
+    shouldUseLower = confirm("Would you liker lower cased characters in your password?")
+    shouldUseUpper = confirm("Would you like upper cased characters in your password?");
+    shouldUseNumber = confirm("Would you like numbers in your password?");
+    shouldUseSpecial = confirm("Would you like special characters in your password?");
+  } else {
+    alert("Invalid password length. Please enter a number between 10 and 64.");
+  }
+
+  function areArraysDefined() {
+    if (!shouldUseLower && !shouldUseUpper && !shouldUseNumber && !shouldUseSpecial) {
+      console.log("At least one of the shouldUse* variable should be true");
+      return;
+    }
+  }
+  areArraysDefined();
+
+  //function to create an array of characters selected by user. Randomises the characters first then adds them to an array depending on how long the user wants the array to be. 
+  function random() {
+    if (shouldUseLower) {
+      let indexOfLower = Math.floor(Math.random() * lowerCasedCharacters.length);
+      passwordCharacters.push(
+        lowerCasedCharacters[indexOfLower]
+      );
+    }
+    if (shouldUseUpper) {
+      let indexOfUpper = Math.floor(Math.random() * upperCasedCharacters.length);
+      passwordCharacters.push(
+        upperCasedCharacters[indexOfUpper]
+      );
+    }
+    if (shouldUseNumber) {
+      let indexOfNumber = Math.floor(Math.random() * numericCharacters.length);
+      passwordCharacters.push(
+        numericCharacters[indexOfNumber]
+      );
+    }
+    if (shouldUseSpecial) {
+      let indexOfSpecial = Math.floor(Math.random() * specialCharacters.length);
+      passwordCharacters.push(
+        specialCharacters[indexOfSpecial]
+      );
+    }
+  }
+
+  while (passwordCharacters.length < lengthOfPassword) {
+    random()
+  };
+
+  // shuffle characters within the password characters array using the Fisher-Yates shuffle algorithm
+  function shuffle() {
+    for (let i = passwordCharacters.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [passwordCharacters[i], passwordCharacters[j]] = [passwordCharacters[j], passwordCharacters[i]];
+    }
+    return passwordCharacters;
+  }
+
+  shuffle();
+
+  // join the password characters array into a string
+  let passwordCharactersString = passwordCharacters.join('');
+
+  return passwordCharactersString;
+
 }
 
 
-// continue here 
 
-// ******* below returns first few in array then rest is undefined
-if (shouldUseUpper) {
-  let indexOfUpper = Math.floor(Math.random() * upperCasedCharacters.length);
-  passwordCharacters.push(
-    upperCasedCharacters[indexOfUpper]
-  );
-}
-
-if (shouldUseNumber) {
-  let indexOfNumber = Math.floor(Math.random() * numericCharacters.length);
-  passwordCharacters.push(
-    numericCharacters[indexOfNumber]
-  );
-}
-
-if (shouldUseSpecial) {
-  let indexOfSpecial = Math.floor(Math.random() * specialCharacters.length);
-  passwordCharacters.push(
-    specialCharacters[indexOfSpecial]
-  );
-}
-
-let passwordCharactersLengthSoFar = passwordCharacters.length;
-
-for (let i = passwordCharactersLengthSoFar; i < lengthOfPassword; i++) {
-  passwordCharacters.push(
-    lowerCasedCharacters[Math.random() * specialCharacters.length],
-  );
-}
-
-
-// TO DO: shuffle characters string 
-
-
-
-
-// join the password characters array into a string
-passwordCharacters.join('');
-
-console.log(passwordCharacters);
-
-
-
-// // Get references to the #generate element
+// // // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input

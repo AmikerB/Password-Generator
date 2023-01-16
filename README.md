@@ -14,3 +14,5 @@ This [webpage](https://amikerb.github.io/Password-Generator/) uses JavaScript to
 - mdn web docs for [.charAT() method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) 
 - mdn web docs for [.join() method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) 
 - mdn web docs for [Math.random() method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) 
+- youtube channel from Inside code for [How to shuffle an array (Fisher-Yates algorithm) - inside code](https://www.youtube.com/watch?v=4zx5bM2OcvA)
+- [Fisher-Yates Shuffle](https://bost.ocks.org/mike/shuffle/)
