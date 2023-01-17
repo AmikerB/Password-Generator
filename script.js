@@ -103,17 +103,18 @@ function generatePassword() {
 
   // making sure the number is between 10 and 64 before the other questions are asked.
   if (lengthOfPassword >= 10 && lengthOfPassword <= 64) {
-    shouldUseLower = confirm("Would you liker lower cased characters in your password?")
-    shouldUseUpper = confirm("Would you like upper cased characters in your password?");
+    shouldUseLower = confirm("Would you like lower case characters in your password?")
+    shouldUseUpper = confirm("Would you like upper case characters in your password?");
     shouldUseNumber = confirm("Would you like numbers in your password?");
     shouldUseSpecial = confirm("Would you like special characters in your password?");
   } else {
     alert("Invalid password length. Please enter a number between 10 and 64.");
+    return;
   }
 
   // checking that user has selected atleast one of the variables as true
   if (!shouldUseLower && !shouldUseUpper && !shouldUseNumber && !shouldUseSpecial) {
-    alert("At least one of the shouldUse* variable should be true");
+    alert("At least one of the password variables should be selected.");
   } else {
     //function to create an array of characters selected by user. Randomises the characters first then adds them to an array depending on how long the user wants the array to be. 
     while (passwordCharacters.length < lengthOfPassword) {
